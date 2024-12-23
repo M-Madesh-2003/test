@@ -38,12 +38,10 @@ const TourPackage = () => {
     );
 
     if (isPlaceSelected) {
-      // If the place is already selected, remove it
       setSelectedPlaces(
         selectedPlaces.filter((selected) => selected.name !== place.name)
       );
     } else {
-      // Otherwise, add the place to the selection
       const updatedPlaces = [...selectedPlaces, place];
       const updatedTotalCost = updatedPlaces.reduce(
         (total, selected) => total + selected.cost * formData.numberOfPeople,
@@ -133,14 +131,28 @@ const TourPackage = () => {
                   />
                 </div>
                 <div>
-                  <label className="font-medium">Travel Date:</label>
+                  <label className="font-medium">Start Date:</label>
                   <input
                     type="date"
-                    value={editedData.travelDate}
+                    value={editedData.startDate}
                     onChange={(e) =>
                       setEditedData({
                         ...editedData,
-                        travelDate: e.target.value,
+                        startDate: e.target.value,
+                      })
+                    }
+                    className="block w-full p-2 border rounded"
+                  />
+                </div>
+                <div>
+                  <label className="font-medium">End Date:</label>
+                  <input
+                    type="date"
+                    value={editedData.endDate}
+                    onChange={(e) =>
+                      setEditedData({
+                        ...editedData,
+                        endDate: e.target.value,
                       })
                     }
                     className="block w-full p-2 border rounded"
@@ -171,8 +183,12 @@ const TourPackage = () => {
                   <span className="font-medium">Budget:</span> ₹{formData.budget}
                 </p>
                 <p>
-                  <span className="font-medium">Travel Date:</span>{" "}
-                  {formData.travelDate}
+                  <span className="font-medium">Start Date:</span>{" "}
+                  {formData.startDate}
+                </p>
+                <p>
+                  <span className="font-medium">End Date:</span>{" "}
+                  {formData.endDate}
                 </p>
                 <button
                   className="bg-primary text-white w-full py-2 rounded-full font-medium"

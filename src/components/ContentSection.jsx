@@ -8,7 +8,7 @@ import { GoDotFill } from "react-icons/go";
 import { places } from "../data/touristPlace";
 
 const ContentSection = () => {
-  const navigation = useNavigate()
+  const navigation = useNavigate();
   const [currentCity, setCurrentCity] = useState("");
   const [currentCountry, setCurrentCountry] = useState("");
   const [enableCitySelection, setEnableCitySelection] = useState(false);
@@ -19,7 +19,8 @@ const ContentSection = () => {
     placeName: "",
     packageType: "",
     budget: "",
-    travelDate: "",
+    startDate: "",
+    endDate: "",
     numberOfPeople: "",
   });
 
@@ -34,13 +35,15 @@ const ContentSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
-    navigation('/yourpackage', {state: formData})
+    navigation("/yourpackage", { state: formData });
     setIsOpen(false);
     setFormData({
       placeName: "",
       packageType: "",
       budget: "",
       travelDate: "",
+      startDate: "",
+      endDate: "",
       numberOfPeople: "",
     });
   };
@@ -272,8 +275,8 @@ const ContentSection = () => {
                   <option value="Adventurous">Adventurous</option>
                   <option value="Devotional">Devotional</option>
                   <option value="Educational">Educational</option>
-                  <option value="Relaxation">Leisure</option>
-                  <option value="Relaxation">Safari</option>
+                  <option value="Leisure">Leisure</option>
+                  <option value="Safari">Safari</option>
                 </select>
               </div>
 
@@ -290,29 +293,49 @@ const ContentSection = () => {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChangeInform}
-                  min={1}
+                  min={0}
                   max={9999999}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
               </div>
 
-              <div className="mb-4">
+              <div className="flex space-x-1 justify-between mb-4">
+              <div>
                 <label
-                  htmlFor="travelDate"
+                  htmlFor="startDate"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Travel Date:
+                  Start Date:
                 </label>
                 <input
                   type="date"
-                  id="travelDate"
-                  name="travelDate"
-                  value={formData.travelDate}
+                  id="startDate"
+                  name="startDate"
+                  value={formData.startDate}
                   onChange={handleChangeInform}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="endDate"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  End Date:
+                </label>
+                <input
+                  type="date"
+                  id="endDate"
+                  name="endDate"
+                  value={formData.endDate}
+                  onChange={handleChangeInform}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  required
+                />
+              </div>
               </div>
 
               <div className="mb-4">
