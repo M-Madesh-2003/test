@@ -17,6 +17,13 @@ const SelectedPlaceDetails = () => {
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [showFullAbout, setShowFullAbout] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () =>{
+    console.log("Modal state updated:", isModalOpen); 
+    setIsModalOpen(false);
+  }
   useEffect(() => {
     const place = places.find((data) => data.name === placename);
     setSelectedPlace(place);
@@ -110,7 +117,10 @@ const SelectedPlaceDetails = () => {
         <div className="my-5 grid grid-cols-5 gap-5">
           <div className="col-span-3">
             <div className="pb-5 border-b">
+              <div className="flex justify-between items-center">
               <p className="text-2xl font-semibold mb-3">About</p>
+              <button onClick={openModal} className="my-3 bg-primary px-4 rounded-full py-1 text-sm font-medium">Virtual Tour</button>
+              </div>
               <p className="text-justify">
                 {showFullAbout
                   ? selectedPlace.about
@@ -225,6 +235,27 @@ const SelectedPlaceDetails = () => {
             </div>
           </div>
         )}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
+          <div className="rounded-lg shadow-lg p-4 w-11/12 md:w-2/3 lg:w-1/2">
+            <div className="relative">
+              <button
+                onClick={closeModal}
+                className="absolute -top-10 -right-10 text-2xl text-black p-1 rounded-full bg-gray-200 cursor-pointer"
+              >
+                <IoClose />
+              </button>
+
+              <video
+                className="w-full h-auto"
+                controls
+                autoPlay
+                src={selectedPlace.vdosrc}
+              ></video>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
       <Footer />
     </>

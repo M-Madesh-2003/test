@@ -276,7 +276,6 @@ const ContentSection = () => {
                   <option value="Devotional">Devotional</option>
                   <option value="Educational">Educational</option>
                   <option value="Leisure">Leisure</option>
-                  <option value="Safari">Safari</option>
                 </select>
               </div>
 
