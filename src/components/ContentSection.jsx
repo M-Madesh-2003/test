@@ -13,6 +13,7 @@ const ContentSection = () => {
   const [currentCountry, setCurrentCountry] = useState("");
   const [enableCitySelection, setEnableCitySelection] = useState(false);
   const [searchPlace, setSearchPlace] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All Places");
 
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -76,6 +77,15 @@ const ContentSection = () => {
   };
 
   const resetSearch = () => setSearchPlace("");
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const filteredPlaces =
+    selectedCategory === "All Places"
+      ? places
+      : places.filter((place) => place.category === selectedCategory);
 
   return (
     <main className="my-10">
@@ -163,9 +173,27 @@ const ContentSection = () => {
       </div>
 
       <div className="m-10">
-        <p className="font-medium text-2xl mb-8">Popular Places to Explore</p>
+        <div className="flex justify-between items-center">
+        <p className="font-medium text-2xl mb-4">Popular Places to Explore</p>
+        <div className="mb-6">
+          <select
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+            className="px-3 py-2 rounded-full border border-gray-300 text-sm focus:outline-none"
+          >
+            <option value="All Places">All Places</option>
+            {[...new Set(places.map((place) => place.category))].map(
+              (category, ind) => (
+                <option key={ind} value={category}>
+                  {category}
+                </option>
+              )
+            )}
+          </select>
+        </div>
+        </div>
         <div className="grid grid-cols-4 justify-between items-center gap-x-5 gap-y-10">
-          {places.map((data, ind) => (
+          {filteredPlaces.map((data, ind) => (
             <div
               key={ind}
               className="w-full h-[360px] bg-white hover:shadow-xl transition-shadow duration-300 border border-gray-200 rounded-lg"
@@ -196,8 +224,7 @@ const ContentSection = () => {
                 </div>
                 {data.entryType === "cost" ? (
                   <p className="font-medium text-[red] text-sm">
-                    Cost:{" "}
-                    <span className="text-black font-medium">₹{data.cost}</span>
+                    Cost: <span className="text-black font-medium">₹{data.cost}</span>
                   </p>
                 ) : (
                   <p className="font-medium text-green-500 text-sm">
@@ -301,41 +328,41 @@ const ContentSection = () => {
               </div>
 
               <div className="flex space-x-1 justify-between mb-4">
-              <div>
-                <label
-                  htmlFor="startDate"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Start Date:
-                </label>
-                <input
-                  type="date"
-                  id="startDate"
-                  name="startDate"
-                  value={formData.startDate}
-                  onChange={handleChangeInform}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
+                <div>
+                  <label
+                    htmlFor="startDate"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Start Date:
+                  </label>
+                  <input
+                    type="date"
+                    id="startDate"
+                    name="startDate"
+                    value={formData.startDate}
+                    onChange={handleChangeInform}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label
-                  htmlFor="endDate"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  End Date:
-                </label>
-                <input
-                  type="date"
-                  id="endDate"
-                  name="endDate"
-                  value={formData.endDate}
-                  onChange={handleChangeInform}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
+                <div>
+                  <label
+                    htmlFor="endDate"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    End Date:
+                  </label>
+                  <input
+                    type="date"
+                    id="endDate"
+                    name="endDate"
+                    value={formData.endDate}
+                    onChange={handleChangeInform}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                </div>
               </div>
 
               <div className="mb-4">
