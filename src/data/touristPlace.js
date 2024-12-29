@@ -92,6 +92,21 @@ import eiffeltower2 from "../assets/eiffeltower/eiffeltower2.webp";
 import eiffeltower3 from "../assets/eiffeltower/eiffeltower3.webp";
 import eiffeltower4 from "../assets/eiffeltower/eiffeltower4.webp";
 
+import auqa from '../assets/aquabar/aqua1.jpg'
+import auqa1 from '../assets/aquabar/aqua2.jpg'
+import auqa2 from '../assets/aquabar/aqua3.jpg'
+import auqa3 from '../assets/aquabar/aqua4.jpg'
+
+import nolimits from '../assets/nolimits/nolimits.jpg'
+import nolimits1 from '../assets/nolimits/nolimits1.jpg'
+import nolimits2 from '../assets/nolimits/nolimits2.jpg'
+import nolimits3 from '../assets/nolimits/nolimits3.jpg'
+
+import kittyko from '../assets/kittyko/kittyko1.jpg'
+import kittyko1 from '../assets/kittyko/kittyko2.jpg'
+import kittyko2 from '../assets/kittyko/kittyko3.jpg'
+import kittyko3 from '../assets/kittyko/kittyko4.jpg'
+
 export const places = [
   {
     name: "Wonderla",
@@ -628,6 +643,102 @@ export const places = [
     },
     entryType: "cost",
     cost: 25,
+    link: "https://lalbaghbotanicalgarden.in/",
+  },
+  {
+    name: "Aqua",
+    mainImg: auqa,
+    sliderImgs: [auqa, auqa1, auqa2, auqa3],
+    category: "Party",
+    type: ["Party"],
+    location: {
+      city: "Bengaluru",
+      state: "Karnataka",
+      country: "India",
+    },
+    age: "Above 21",
+    about:
+      "Stylish hotel bar serving cocktails & spirits with lounge seating on a chic poolside patio.",
+    ratings: 4,
+    reviews: 4543,
+    timing: [
+      "Monday 11:00 AM – 1:00 AM",
+      "Tuesday 11:00 AM – 1:00 AM",
+      "Wednesday 11:00 AM – 1:00 AM",
+      "Thursday 11:00 AM – 1:00 AM",
+      "Friday 11:00 AM – 1:00 AM",
+      "Saturday 11:00 AM – 1:00 AM",
+      "Sunday 11:00 AM – 1:00 AM",
+    ],
+    ticketPrice: {
+      adult: 2000,
+    },
+    entryType: "cost",
+    cost: 2000,
+    link: "https://lalbaghbotanicalgarden.in/",
+  },
+  {
+    name: "Nolimmits Lounge & Club",
+    mainImg: nolimits,
+    sliderImgs: [nolimits, nolimits1, nolimits2, nolimits3],
+    category: "Party",
+    type: ["Party"],
+    location: {
+      city: "Bengaluru",
+      state: "Karnataka",
+      country: "India",
+    },
+    age: "Above 21",
+    about:
+      "Happening, neon-lit nightclub & lounge featuring DJ'd music, plus bar food with veggie options.",
+    ratings: 3,
+    reviews: 4543,
+    timing: [
+      "Monday 11:00 AM - 1:00 AM",
+      "Tuesday 11:00 AM - 1:00 AM",
+      "Wednesday 11:00 AM - 1:00 AM",
+      "Thursday 11:00 AM - 1:00 AM",
+      "Friday 11:00 AM - 1:00 AM",
+      "Saturday 11:00 AM - 1:00 AM",
+      "Sunday 11:00 AM - 1:00 AM",
+    ],
+    ticketPrice: {
+      adult: 2000,
+    },
+    entryType: "cost",
+    cost: 2000,
+    link: "https://lalbaghbotanicalgarden.in/",
+  },
+  {
+    name: "Kitty Ko",
+    mainImg: kittyko,
+    sliderImgs: [kittyko, kittyko1, kittyko2, kittyko3],
+    category: "Party",
+    type: ["Party"],
+    location: {
+      city: "Bengaluru",
+      state: "Karnataka",
+      country: "India",
+    },
+    age: "Above 21",
+    about:
+      "Swanky nightspot at the The LaLiT hotel, offering cocktails & a patio with city vistas.",
+    ratings: 4,
+    reviews: 2342,
+    timing: [
+      "Monday 07:00 AM - 11:30 PM",
+      "Tuesday 07:00 AM - 11:30 PM",
+      "Wednesday 07:00 AM - 11:30 PM",
+      "Thursday 07:00 AM - 11:30 PM",
+      "Friday 07:00 AM - 11:30 PM",
+      "Saturday 07:00 AM - 11:30 PM",
+      "Sunday 07:00 AM - 11:30 PM",
+    ],
+    ticketPrice: {
+      adult: 2000,
+    },
+    entryType: "cost",
+    cost: 2000,
     link: "https://lalbaghbotanicalgarden.in/",
   },
 ];
