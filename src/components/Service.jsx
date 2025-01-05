@@ -1,53 +1,82 @@
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import { useState } from "react";
+import { GoPlus } from "react-icons/go";
+import { serviceData } from "../data/Service";
 
 const Service = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleGrowBox = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
   return (
     <>
       <NavBar />
       <div className="px-10 my-10">
         <p className="text-3xl font-medium">Our Services</p>
-        <p className="indent-10 my-3 text-lg">
-          At GoExplore, we believe in making your travel dreams come true. With
-          a wide array of personalized travel services, we are here to ensure
-          your journey is as seamless and enjoyable as possible. Explore our
-          offerings below:
-        </p>
 
-        <ul className="space-y-3 my-5">
-          <li>
-            <p className="text-lg font-medium">1. Customized Tour Packages</p>
-            <p className="indent-10">
-              Discover a world of possibilities with our tailored tour packages.
-              Whether you are an adventure enthusiast, a culture seeker, or a
-              leisure traveler, we curate trips that match your preferences and
-              budget.
-            </p>
-          </li>
-          <li>
-            <p className="text-lg font-medium">2. Destination Planning</p>
-            <p className="indent-10">
-              Not sure where to go? Let our travel experts guide you! From
-              hidden gems to world-famous landmarks, we’ll help you choose the
-              perfect destination to suit your style.
-            </p>
-          </li>
-          <li>
-            <p className="text-lg font-medium">3. Booking Assistance</p>
-            <p className="indent-10">
-              From flights to accommodations and local transportation, we handle
-              all your bookings so you can focus on enjoying your trip.
-            </p>
-          </li>
-          <li>
-            <p className="text-lg font-medium">4. Guided Tours</p>
-            <p className="indent-10">
-              Experience destinations like never before with our knowledgeable
-              guides. Learn fascinating stories, explore iconic landmarks, and
-              immerse yourself in local culture.
-            </p>
-          </li>
-        </ul>
+        <div className="grid grid-cols-2 gap-x-10 my-10 items-start">
+          <div>
+            <ul className="my-3 text-lg space-y-5">
+              <li className="indent-10">
+                At GoExplore, we’re passionate about turning your travel dreams
+                into reality. Whether you’re planning a relaxing getaway, a
+                thrilling adventure, or a cultural immersion, we’ve got you
+                covered.
+              </li>
+              <li className="indent-10">
+                Our personalized travel services are designed to cater to your
+                unique preferences, making every step of your journey effortless
+                and unforgettable. From expertly crafted itineraries to seamless
+                bookings, we handle all the details so you can focus on creating
+                lifelong memories.
+              </li>
+              <li className="indent-10">
+                Discover the joy of traveling with a trusted partner by your
+                side. With GoExplore, your dream destinations are just a click
+                away!
+              </li>
+            </ul>
+          </div>
+          <div className="relative -top-12">
+            {serviceData.map((data, index) => (
+              <div
+                key={index}
+                onClick={() => toggleGrowBox(index)}
+                className="bg-gray-100 p-8 rounded-xl mt-8 cursor-pointer"
+              >
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-x-1">
+                    <p className="text-xl select-none">
+                      <data.logo /> {/* Render the icon here */}
+                    </p>
+                    <p className="text-xl select-none">{data.title}</p>
+                  </div>
+                  <button
+                    className={`text-2xl cursor-pointer transform duration-500 ${
+                      openIndex === index ? "rotate-45" : ""
+                    }`}
+                  >
+                    <GoPlus />
+                  </button>
+                </div>
+
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    openIndex === index
+                      ? "max-h-[500px] opacity-100 mt-8"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-gray-600 text-lg select-none">
+                    {data.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       <Footer />
     </>
